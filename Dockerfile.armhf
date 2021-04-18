@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:arm32v7-3.13
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:arm32v7-3.13-php8
 
 # set version label
 ARG BUILD_DATE
@@ -20,21 +20,24 @@ RUN \
 	gd \
 	imagemagick \
 	jpegoptim \
-	php7-bcmath \
-	php7-ctype \
-	php7-dom \
-	php7-exif \
-	php7-gd \
-	php7-imagick \
-	php7-intl \
-	php7-json \
-	php7-mbstring \
-	php7-mysqli \
-	php7-pdo_mysql \
-	php7-session \
-	php7-tokenizer \
-	php7-xml \
-	php7-zip && \
+	php8-bcmath \
+	php8-ctype \
+	php8-curl \
+	php8-dom \
+	php8-exif \
+	php8-gd \
+	php8-iconv \
+	php8-intl \
+	php8-json \
+	php8-mbstring \
+	php8-mysqli \
+	php8-pdo_mysql \
+	php8-pecl-imagick \
+	php8-phar \
+	php8-session \
+	php8-tokenizer \
+	php8-xml \
+	php8-zip && \
  echo "**** install lychee ****" && \
  mkdir -p /app/lychee && \
  if [ -z ${LYCHEE_VERSION} ]; then \
@@ -47,12 +50,16 @@ RUN \
  tar xf \
  /tmp/lychee.tar.gz -C \
 	 /app/lychee/ --strip-components=1 && \
+ echo "**** install composer and dependencies ****" && \
+ mkdir -p /tmp/composer && \
+ cd /tmp/composer && \
+ php8 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+ php8 composer-setup.php && \
  cd /app/lychee && \
- echo "**** install composer dependencies ****" && \
- composer install \
+ php8 /tmp/composer/composer.phar install \
  	-d /app/lychee \
+	--prefer-dist \
 	--no-dev \
-	--no-suggest \
 	--no-interaction && \
  echo "**** cleanup ****" && \
  apk del --purge \

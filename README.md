@@ -259,6 +259,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **18.04.21:** - Upgrade to php8.
 * **18.04.21:** - Add php-intl for v4.3.
 * **31.01.21:** - Add jpegoptim.
 * **15.01.21:** - Rebase to alpine 3.13, add php7-ctype.

@@ -86,6 +86,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "18.04.21:", desc: "Upgrade to php8." }
   - { date: "18.04.21:", desc: "Add php-intl for v4.3." }
   - { date: "31.01.21:", desc: "Add jpegoptim." }
   - { date: "15.01.21:", desc: "Rebase to alpine 3.13, add php7-ctype." }
