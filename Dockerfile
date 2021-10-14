@@ -45,7 +45,7 @@ RUN \
     /tmp/lychee.tar.gz -L \
     "https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_VERSION}.tar.gz" && \
   tar xf \
-  /tmp/lychee.tar.gz -C \
+    /tmp/lychee.tar.gz -C \
     /app/lychee/ --strip-components=1 && \
   cd /app/lychee && \
   echo "**** install composer dependencies ****" && \
