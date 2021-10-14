@@ -88,6 +88,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "14.10.21:", desc: "Use standard nginx.conf from lsio alpine nginx base image." }
   - { date: "13.05.21:", desc: "Make readme clearer." }
   - { date: "18.04.21:", desc: "Add php-intl for v4.3." }
   - { date: "31.01.21:", desc: "Add jpegoptim." }
