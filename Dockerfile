@@ -36,7 +36,7 @@ RUN \
     php7-xml \
     php7-zip && \
   echo "**** install lychee ****" && \
-  mkdir -p /app/lychee && \
+  mkdir -p /app/www && \
   if [ -z ${LYCHEE_VERSION} ]; then \
     LYCHEE_VERSION=$(curl -sX GET "https://api.github.com/repos/LycheeOrg/Lychee/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
@@ -46,11 +46,11 @@ RUN \
     "https://github.com/LycheeOrg/Lychee/archive/${LYCHEE_VERSION}.tar.gz" && \
   tar xf \
     /tmp/lychee.tar.gz -C \
-    /app/lychee/ --strip-components=1 && \
-  cd /app/lychee && \
+    /app/www/ --strip-components=1 && \
+  cd /app/www && \
   echo "**** install composer dependencies ****" && \
   composer install \
-    -d /app/lychee \
+    -d /app/www \
     --no-dev \
     --no-suggest \
     --no-interaction && \
