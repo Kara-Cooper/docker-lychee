@@ -10,8 +10,7 @@ LABEL maintainer="hackerman"
 RUN \
   echo "**** install build packages ****" && \
   apk add --no-cache --virtual=build-dependencies \
-    composer \
-    git && \
+    composer && \
   echo "**** install runtime packages ****" && \
   apk add --no-cache \
     curl \
@@ -58,8 +57,8 @@ RUN \
   apk del --purge \
     build-dependencies && \
   rm -rf \
-    /root/.cache \
     /root/.composer \
+    /root/.cache \
     /tmp/*
 
 # add local files
